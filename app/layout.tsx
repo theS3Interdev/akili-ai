@@ -21,7 +21,7 @@ export default function RootLayout({ children }: Children) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="font-opensans scroll-smooth antialiased">
+        <body className="scroll-smooth font-opensans text-[#404756] antialiased">
           {children}
         </body>
       </html>
