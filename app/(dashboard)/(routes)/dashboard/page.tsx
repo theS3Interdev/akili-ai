@@ -18,7 +18,8 @@ const DashboardPage = () => {
           Weild the power of AI
         </h2>
         <p className="text-center text-sm font-light text-muted-foreground md:text-lg">
-          Chat with the most perceptive AI - Discover the power of AI
+          Converse with a highly perceptive AI, uncovering the transformative
+          power of AI
         </p>
       </div>
 
@@ -27,7 +28,7 @@ const DashboardPage = () => {
           <Card
             onClick={() => router.push(tool.href)}
             key={tool.href}
-            className="flex cursor-pointer items-center justify-between border-[#404756]/5 p-4 transition hover:shadow-lg"
+            className="flex cursor-pointer items-center justify-between border-[#404756]/5 p-4 transition hover:shadow-md"
           >
             <div className="flex items-center gap-x-4">
               <div className={cn("w-fit rounded-md p-2", tool.bgColor)}>
