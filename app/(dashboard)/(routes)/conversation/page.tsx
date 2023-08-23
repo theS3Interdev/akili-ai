@@ -3,26 +3,28 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import axios from "axios";
 import * as z from "zod";
 import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChatCompletionRequestMessage } from "openai";
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-//import BotAvatar from "@/components/bot-avatar";
-//import Empty from "@/components/empty";
+import BotAvatar from "@/components/bot-avatar";
+import Empty from "@/components/empty";
 import Heading from "@/components/heading";
-//import Loader from "@/components/loader";
-//import UserAvatar from "@/components/user-avatar";
+import Loader from "@/components/loader";
+import UserAvatar from "@/components/user-avatar";
 
-//import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { FormSchema } from "@/app/(dashboard)/(routes)/conversation/constants";
 
 const ConversationPage = () => {
   const router = useRouter();
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -34,29 +36,31 @@ const ConversationPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    console.log(values);
-    // try {
-    //   const userMessage: ChatCompletionRequestMessage = {
-    //     role: "user",
-    //     content: values.prompt,
-    //   };
-    //   const newMessages = [...messages, userMessage];
+    try {
+      const userMessage: ChatCompletionRequestMessage = {
+        role: "user",
+        content: values.prompt,
+      };
 
-    //   const response = await axios.post("/api/conversation", {
-    //     messages: newMessages,
-    //   });
-    //   setMessages((current) => [...current, userMessage, response.data]);
+      const newMessages = [...messages, userMessage];
 
-    //   form.reset();
-    // } catch (error: any) {
-    //   if (error?.response?.status === 403) {
-    //     proModal.onOpen();
-    //   } else {
-    //     toast.error("Something went wrong.");
-    //   }
-    // } finally {
-    //   router.refresh();
-    // }
+      const response = await axios.post("/api/conversation", {
+        messages: newMessages,
+      });
+
+      setMessages((current) => [...current, userMessage, response.data]);
+
+      form.reset();
+    } catch (error: any) {
+      console.log(error);
+      // if (error?.response?.status === 403) {
+      //   proModal.onOpen();
+      // } else {
+      //   toast.error("An error has occured.");
+      // }
+    } finally {
+      router.refresh();
+    }
   };
 
   return (
@@ -110,8 +114,7 @@ const ConversationPage = () => {
 
         {/* messages display area start */}
         <div className="mt-4 space-y-4">
-          Messages Content
-          {/* {isLoading && (
+          {isLoading && (
             <div className="flex w-full items-center justify-center rounded-lg bg-muted p-8">
               <Loader />
             </div>
@@ -136,7 +139,7 @@ const ConversationPage = () => {
                 <p className="text-sm">{message.content}</p>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
         {/* messages display area end */}
       </div>
