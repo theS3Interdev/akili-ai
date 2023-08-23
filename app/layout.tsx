@@ -9,8 +9,8 @@ type Children = {
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon/svg",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
   },
   title: "Akili AI Creativity Assistant | Akili AI",
   description:

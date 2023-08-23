@@ -69,7 +69,7 @@ const SideBar = () => {
         {/* logo section start */}
         <Link href="/dashboard" className="mb-14 flex items-center pl-3">
           <div className="relative mr-4 h-8 w-8">
-            <Image fill alt="Logo" src="/favicon.svg" />
+            <Image fill alt="Logo" src="/logo.svg" />
           </div>
           <h1 className="font-montserrat text-2xl font-bold">Akili</h1>
         </Link>
