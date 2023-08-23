@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import SideBar from "@/components/side-bar";
 
 const MobileSideBar = () => {
+  /* hydration error code fix start */
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const MobileSideBar = () => {
   if (!isMounted) {
     return null;
   }
+  /* hydration error code fix end */
 
   return (
     <Sheet>
