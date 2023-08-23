@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Montserrat } from "next/font/google";
 
 import {
   Code,
@@ -16,8 +15,6 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-
-const titleFont = Montserrat({ weight: "600", subsets: ["latin"] });
 
 const routes = [
   {
@@ -64,7 +61,7 @@ const routes = [
 ];
 
 const SideBar = () => {
-  const pathname = usePathname();
+  const pathName = usePathname();
 
   return (
     <div className="flex h-full flex-col space-y-4 bg-[#E6F4F1] py-4">
@@ -74,9 +71,7 @@ const SideBar = () => {
           <div className="relative mr-4 h-8 w-8">
             <Image fill alt="Logo" src="/favicon.svg" />
           </div>
-          <h1 className={cn("text-2xl font-bold", titleFont.className)}>
-            Akili
-          </h1>
+          <h1 className="font-montserrat text-2xl font-bold">Akili</h1>
         </Link>
         {/* logo section end */}
 
@@ -86,7 +81,12 @@ const SideBar = () => {
             <Link
               key={route.href}
               href={route.href}
-              className="group flex w-full cursor-pointer justify-start rounded-lg p-3 text-sm font-medium transition  hover:bg-[#404756]/10 hover:text-[#404756]"
+              className={cn(
+                "group flex w-full cursor-pointer justify-start rounded-lg p-3 text-sm font-medium transition  hover:bg-[#404756]/10 hover:text-[#404756]",
+                pathName === route.href
+                  ? "bg-[#404756]/10 text-[#404756]"
+                  : "text-[#404756]",
+              )}
             >
               <div className="flex flex-1 items-center">
                 <route.icon className={cn("mr-3 h-5 w-5", route.color)} />
