@@ -20,15 +20,15 @@ import Loader from "@/components/loader";
 import UserAvatar from "@/components/user-avatar";
 
 import { cn } from "@/lib/utils";
-import { FormSchema } from "@/app/(dashboard)/(routes)/conversation/constants";
+import { formSchema } from "@/app/(dashboard)/(routes)/conversation/constants";
 
 const ConversationPage = () => {
   const router = useRouter();
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: "",
     },
@@ -36,7 +36,7 @@ const ConversationPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
