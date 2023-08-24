@@ -14,12 +14,11 @@ const DashboardPage = () => {
   return (
     <div>
       <div className="mb-8 space-y-4">
-        <h2 className="font-montserrat text-center text-2xl font-bold md:text-4xl">
+        <h2 className="text-center font-montserrat text-2xl font-bold md:text-4xl">
           Weild the power of AI
         </h2>
         <p className="text-center text-sm font-light text-muted-foreground md:text-lg">
-          Converse with a highly perceptive AI, uncovering the transformative
-          power of AI
+          Converse with a highly perceptive AI, unleash your creativity.
         </p>
       </div>
 
