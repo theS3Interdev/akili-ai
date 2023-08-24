@@ -79,7 +79,7 @@ const VideoGenerationPage = () => {
                     <Input
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                       disabled={isLoading}
-                      placeholder="Clown fish swimming in the coral reef..."
+                      placeholder="Clown fish swimming in a coral reef, beautiful, 8k, perfect, award winning, national geographic..."
                       {...field}
                     />
                   </FormControl>
