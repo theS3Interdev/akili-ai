@@ -24,6 +24,7 @@ import { FormSchema } from "@/app/(dashboard)/(routes)/conversation/constants";
 
 const ConversationPage = () => {
   const router = useRouter();
+
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -100,7 +101,7 @@ const ConversationPage = () => {
               />
 
               <Button
-                className="col-span-12 w-full bg-[#C84495] text-xs uppercase tracking-wide hover:bg-[#B451A9] lg:col-span-2"
+                className="col-span-12 w-full bg-violet-800 text-xs uppercase tracking-wide hover:bg-violet-600 lg:col-span-2"
                 type="submit"
                 disabled={isLoading}
                 size="icon"
