@@ -21,15 +21,15 @@ import Loader from "@/components/loader";
 import UserAvatar from "@/components/user-avatar";
 
 import { cn } from "@/lib/utils";
-import { FormSchema } from "@/app/(dashboard)/(routes)/conversation/constants";
+import { formSchema } from "@/app/(dashboard)/(routes)/code/constants";
 
 const CodeGenerationPage = () => {
   const router = useRouter();
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: "",
     },
@@ -37,7 +37,7 @@ const CodeGenerationPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
@@ -91,7 +91,7 @@ const CodeGenerationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="Generate a simple toggle button using react hooks."
+                        placeholder="Generate a simple toggle button using react hooks..."
                         {...field}
                       />
                     </FormControl>
