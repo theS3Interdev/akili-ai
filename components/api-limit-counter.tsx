@@ -28,8 +28,9 @@ const APILimitCounter = ({ apiLimitCount = 0 }: APILimitCount) => {
       <Card className="border-0 bg-[#404756]/10">
         <CardContent className="py-6">
           <div className="mb-4 space-y-2 text-center text-sm text-[#404756]">
-            <p>
-              {apiLimitCount} / {MAX_FREE_ATTEMPTS} Free Generation Attempts
+            <p className="pb-1 font-semibold">
+              {apiLimitCount} of {MAX_FREE_ATTEMPTS}{" "}
+              <span className="text-xs">Free Generation Attempts</span>
             </p>
             <Progress
               className="h-3"
