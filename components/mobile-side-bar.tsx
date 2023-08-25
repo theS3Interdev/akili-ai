@@ -7,7 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import SideBar from "@/components/side-bar";
 
-const MobileSideBar = () => {
+type SideBarProp = {
+  apiLimitCount: number;
+};
+
+const MobileSideBar = ({ apiLimitCount = 0 }: SideBarProp) => {
   /* hydration error code fix start */
   const [isMounted, setIsMounted] = useState(false);
 
@@ -29,7 +33,7 @@ const MobileSideBar = () => {
       </SheetTrigger>
 
       <SheetContent side="left" className="p-0">
-        <SideBar />
+        <SideBar apiLimitCount={apiLimitCount} />
       </SheetContent>
     </Sheet>
   );

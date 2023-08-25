@@ -14,6 +14,8 @@ import {
   VideoIcon,
 } from "lucide-react";
 
+import APILimitCounter from "@/components/api-limit-counter";
+
 import { cn } from "@/lib/utils";
 
 const routes = [
@@ -60,7 +62,11 @@ const routes = [
   },
 ];
 
-const SideBar = () => {
+type SideBarProp = {
+  apiLimitCount: number;
+};
+
+const SideBar = ({ apiLimitCount = 0 }: SideBarProp) => {
   const pathName = usePathname();
 
   return (
@@ -97,6 +103,7 @@ const SideBar = () => {
         </div>
         {/* route links section end */}
       </div>
+      <APILimitCounter apiLimitCount={apiLimitCount} />
     </div>
   );
 };
